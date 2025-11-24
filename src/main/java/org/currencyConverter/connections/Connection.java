@@ -18,7 +18,7 @@ public class Connection {
         try {
 
             Properties props = new Properties();
-            try (InputStream is = Main.class.getResourceAsStream("/config.properties")) {
+            try (InputStream is = Main.class.getResourceAsStream("/config.ex.properties")) {
                 props.load(is);
             } catch (Exception ex){
                 System.out.println(ex);

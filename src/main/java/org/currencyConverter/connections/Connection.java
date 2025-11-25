@@ -14,7 +14,7 @@ public class Connection {
 
 
 
-    public static HttpResponse<String> request(String query) throws IOException {
+    public static HttpResponse<String> request(String divisaFrom, String divisaTo ) throws IOException {
         try {
 
             Properties props = new Properties();
@@ -31,7 +31,7 @@ public class Connection {
 
             HttpRequest req = HttpRequest.newBuilder()
                     .uri(URI.create(
-                            String.format("https://api.fastforex.io/%s",query)
+                            String.format("https://api.fastforex.io/fetch-one?from=%s&to=%s",divisaFrom,divisaTo)
                     ))
                     .header("Authorization","Bearer "+API_KEY)
                     .GET()

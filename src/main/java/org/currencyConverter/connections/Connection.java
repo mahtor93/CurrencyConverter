@@ -1,14 +1,11 @@
 package org.currencyConverter.connections;
 
-import org.currencyConverter.Main;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Properties;
 
 public class Connection {
 
@@ -17,15 +14,6 @@ public class Connection {
     public static HttpResponse<String> request(String divisaFrom, String divisaTo ) throws IOException {
         try {
 
-            Properties props = new Properties();
-            try (InputStream is = Main.class.getResourceAsStream("/config.ex.properties")) {
-                props.load(is);
-            } catch (Exception ex){
-                System.out.println(ex);
-            }
-
-            String API_KEY = props.getProperty("API_KEY");
-
             HttpClient client = HttpClient.newBuilder()
                     .build();
 
@@ -33,7 +21,7 @@ public class Connection {
                     .uri(URI.create(
                             String.format("https://api.fastforex.io/fetch-one?from=%s&to=%s",divisaFrom,divisaTo)
                     ))
-                    .header("Authorization","Bearer "+API_KEY)
+                    .header("Authorization","Bearer "+"655eca4e59-1d42f68b5b-t68w5e")
                     .GET()
                     .build();
 
